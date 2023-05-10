@@ -13,8 +13,8 @@ Ce projet est effectué sous forme de groupe, le meilleur groupe ira au salon po
 
 --------------------------------------------
 
-Nom des personnes sur ce projet (au sein du groupe).
-SLAM (Programmeur) : Arthur Augis, Lou-Enzo Quetineau & Alexis Rebhuhn.
+Nom des personnes sur ce projet (au sein du groupe).                                                             
+SLAM (Programmeur) : Arthur Augis, Lou-Enzo Quetineau & Alexis Rebhuhn.                                          
 SISR (Réseau): Cyrian Picard & Cédric Moisan.
 
 
