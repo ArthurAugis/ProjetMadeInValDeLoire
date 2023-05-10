@@ -1,4 +1,4 @@
-# ProjetMadeInValDeLoire
+#  Projet Made X In Val De Loire
 
 Projet de fin d'année pour le salon Made In Val de Loire le 7 Novembre 2023.
 
