@@ -34,7 +34,7 @@ Voici la liste des objectifs que nous devons réaliser pendant ces trois jours d
 •	Prévoir différents niveaux d'accès (collégiens, lycéens, étudiants, professionnels sont vos visiteurs, donc vos utilisateurs).
 
 
-# Nos objectif par jour
+# Nos objectifs par jour
 ## 9 Mai. 2023
 Création des groupes.                  
 
@@ -47,13 +47,13 @@ Les groupes SLAM:
 Chaque groupe SLAM doit être complété par des étudiants SISR.                          
 Pour chaque Groupe (SLAM/SISR) :                        
 • Appropriation du contexte et de la demande.                                
-• Propositions d'une base de données, mais aussi des maquettes d'écrans, d'organisa3on etc...                                             
+• Propositions d'une base de données, mais aussi des maquettes d'écrans, d'organisation etc...                                             
 • Propositions des applications retenues.                              
 
 Dépôts attendus :                                   
 Les prototypes associés aux applications proposées (les écrans prévus, leurs enchaînements).                          
 
-• La base de données retenue (schéma physique ou schéma rela3onnel ou schéma Uml).                           
+• La base de données retenue (schéma physique ou schéma relationnel ou schéma Uml).                           
 • Les conventions de nommages prévues pour la base de données ainsi que pour le code.                         
 • Le nom du chef de projet (1 SLAM par groupe).                           
 • Le lien GIT associé à votre projet.                             
@@ -68,7 +68,7 @@ Programmation pour les SLAM.
 Remplissage de la base de données pour les SISR.                              
 
 SISR:                                       
-La prochaine étape des développeurs sera la création d'un site web (Apache, MySQL/MariaDB, PHP,  JS) proposant  entre-autre  les  jeux associés à  la  CyberSécurité  mais  adapté  au  Web;  mais également un espace associé au numérique ( salon régional présentant un espace jeux vidéo, un espace associé aux cosplayeurs, un espace associé à la cybersécurité, un espace associé aux stages-Dating). Votre travail : proposer le serveur Web qui doit être associé à ce site Web.
+La prochaine étape des développeurs sera la création d'un site web (Apache, MySQL/MariaDB, PHP, JS) proposant entre-autre les jeux associés à la CyberSécurité, mais adaptés au Web ; mais également un espace associé au numérique ( salon régional présentant un espace jeux vidéo, un espace associé aux cosplayeurs, un espace associé à la cybersécurité, un espace associé aux stages-Dating). Votre travail : proposer le serveur Web qui doit être associé à ce site Web.
 
 ## 11 Mai. 2023
 Début de journée :                                            
@@ -88,7 +88,7 @@ SLAM:
 • Dépôt de la documentation associée au serveur Web retenu.                            
 -	Vote de la meilleure application proposée de type Quiz.                          
 -	Vote de la meilleure application proposée autre que le Quiz.                       
--	Vote sur les meilleurs questions/réponses proposées sur les Quiz.                           
+-	Vote sur les meilleures questions/réponses proposées sur les Quiz.                           
 
 --------------------------------------------
 
