@@ -70,6 +70,26 @@ Remplissage de la base de données pour les SISR.
 SISR:                                       
 La prochaine étape des développeurs sera la création d'un site web (Apache, MySQL/MariaDB, PHP,  JS) proposant  entre-autre  les  jeux associés à  la  CyberSécurité  mais  adapté  au  Web;  mais également un espace associé au numérique ( salon régional présentant un espace jeux vidéo, un espace associé aux cosplayeurs, un espace associé à la cybersécurité, un espace associé aux stages-Dating). Votre travail : proposer le serveur Web qui doit être associé à ce site Web.
 
+## 11 Mai. 2023
+Début de journée :                                            
+Bilan avec les différents groupes.                                 
+Programmation pour les SLAM.                             
+Fin du remplissage de la base de données pour les SISR.                             
+
+SISR:                             
+• Tests des applications créées.                          
+• Rapports de tests.                         
+
+SLAM:                            
+• Tests des applications créées.                           
+• Rapports de tests.                             
+
+• Dépôt des applications fonctionnelles.                            
+• Dépôt de la documentation associée au serveur Web retenu.                            
+-	Vote de la meilleure application proposée de type Quiz.                          
+-	Vote de la meilleure application proposée autre que le Quiz.                       
+-	Vote sur les meilleurs questions/réponses proposées sur les Quiz.                           
+
 --------------------------------------------
 
 Nom des personnes sur ce projet (au sein du groupe).                                                             
