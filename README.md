@@ -19,10 +19,10 @@ De plus nos encadrants nous ont aussi demandés de proposé d’autres idées d�
 # Nos missions
 Voici la liste des objectifs que nous devons réaliser pendant ces trois jours de projets :
 
-•	Réaliser une application de type Quiz.
-•	Proposer un autre type d'application.
-•	Proposer une base de données associée pour l’application.
-•	Déposer une base de données remplie (d’information style questions…).
+•	Réaliser une application de type Quiz.              
+•	Proposer un autre type d'application.                       
+•	Proposer une base de données associée pour l’application.                     
+•	Déposer une base de données remplie (d’information style questions…).                           
 
 •	Proposer un niveau d’accès (login) :
  	- Public : pas de mot de passe ni de login, pas de suivi individuel des scores.
