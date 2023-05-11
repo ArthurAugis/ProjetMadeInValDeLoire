@@ -47,7 +47,8 @@ Les groupes SLAM:
 Chaque groupe SLAM doit être complété par des étudiants SISR.                          
 Pour chaque Groupe (SLAM/SISR) :                        
 • Appropriation du contexte et de la demande.                                
-• Propositions d'une base de données, mais aussi des maquettes d'écrans, d'organisa3on etc... • Propositions des applications retenues.                              
+• Propositions d'une base de données, mais aussi des maquettes d'écrans, d'organisa3on etc...                                             
+• Propositions des applications retenues.                              
 
 Dépôts attendus :                                   
 Les prototypes associés aux applications proposées (les écrans prévus, leurs enchaînements).                          
@@ -67,7 +68,7 @@ Programmation pour les SLAM.
 Remplissage de la base de données pour les SISR.                              
 
 SISR:                                       
-La prochaine étape des développeurs sera la création d'un site web (Apache, MySQL/MariaDB, PHP,  JS) proposant  entre-autre  les  jeux associés à  la  CyberSécurité  mais  adapté  au  Web;  mais également un espace associé au numérique ( salon régional présentant un espace jeux vidéo, un espace associé aux cosplayeurs, un espace associé à la cybersécurité, un espace associé aux stages-Da3ng). Votre travail : proposer le serveur Web qui doit être associé à ce site Web.
+La prochaine étape des développeurs sera la création d'un site web (Apache, MySQL/MariaDB, PHP,  JS) proposant  entre-autre  les  jeux associés à  la  CyberSécurité  mais  adapté  au  Web;  mais également un espace associé au numérique ( salon régional présentant un espace jeux vidéo, un espace associé aux cosplayeurs, un espace associé à la cybersécurité, un espace associé aux stages-Dating). Votre travail : proposer le serveur Web qui doit être associé à ce site Web.
 
 --------------------------------------------
 
