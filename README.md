@@ -24,13 +24,13 @@ Voici la liste des objectifs que nous devons réaliser pendant ces trois jours d
 •	Proposer une base de données associée pour l’application.                     
 •	Déposer une base de données remplie (d’information style questions…).                           
 
-•	Proposer un niveau d’accès (login) :
- 	- Public : pas de mot de passe ni de login, pas de suivi individuel des scores.
+•	Proposer un niveau d’accès (login) :                            
+ 	- Public : pas de mot de passe ni de login, pas de suivi individuel des scores.                        
 	- Privé : un accès via login/mot de passe (à vous de les définir), historique des scores avec date, heure de réalisation, tableau des meilleurs scores.
 
 
-•	Déposer la documentation technique associée au projet ainsi que les tests réalisés.
-•	Prévoir une aide sur l'application.
+•	Déposer la documentation technique associée au projet ainsi que les tests réalisés.           
+•	Prévoir une aide sur l'application.                         
 •	Prévoir différents niveaux d'accès (collégiens, lycéens, étudiants, professionnels sont vos visiteurs, donc vos utilisateurs).
 
 
