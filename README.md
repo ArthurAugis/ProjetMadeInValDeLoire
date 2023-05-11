@@ -60,6 +60,15 @@ Les prototypes associés aux applications proposées (les écrans prévus, leurs
 -	Début de la programmation pour les SLAM.                               
 -	Début de la création des quiz pour les SISR.                                    
 
+## 10 Mai. 2023
+Début de journée :                                     
+Bilan avec les différents groupes.                         
+Programmation pour les SLAM.                                       
+Remplissage de la base de données pour les SISR.                              
+
+SISR:                                       
+La prochaine étape des développeurs sera la création d'un site web (Apache, MySQL/MariaDB, PHP,  JS) proposant  entre-autre  les  jeux associés à  la  CyberSécurité  mais  adapté  au  Web;  mais également un espace associé au numérique ( salon régional présentant un espace jeux vidéo, un espace associé aux cosplayeurs, un espace associé à la cybersécurité, un espace associé aux stages-Da3ng). Votre travail : proposer le serveur Web qui doit être associé à ce site Web.
+
 --------------------------------------------
 
 Nom des personnes sur ce projet (au sein du groupe).                                                             
