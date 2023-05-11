@@ -15,6 +15,7 @@ Ce Quiz doit être ludique et accessible à tous les visiteurs.
 
 De plus nos encadrants nous ont aussi demandés de proposé d’autres idées d’applications qui pourrons être présenté et exploitée lors du salon. 
 
+
 # Nos missions
 Voici la liste des objectifs que nous devons réaliser pendant ces trois jours de projets :
 
@@ -31,6 +32,9 @@ Voici la liste des objectifs que nous devons réaliser pendant ces trois jours d
 •	Déposer la documentation technique associée au projet ainsi que les tests réalisés.
 •	Prévoir une aide sur l'application.
 •	Prévoir différents niveaux d'accès (collégiens, lycéens, étudiants, professionnels sont vos visiteurs, donc vos utilisateurs).
+
+
+#
 
 --------------------------------------------
 
