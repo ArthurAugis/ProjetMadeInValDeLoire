@@ -34,7 +34,7 @@ Voici la liste des objectifs que nous devons réaliser pendant ces trois jours d
 •	Prévoir différents niveaux d'accès (collégiens, lycéens, étudiants, professionnels sont vos visiteurs, donc vos utilisateurs).
 
 
-## Nos objectif par jour
+# Nos objectif par jour
 
 --------------------------------------------
 
