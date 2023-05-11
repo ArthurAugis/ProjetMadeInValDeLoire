@@ -3,13 +3,18 @@
 Projet de fin d'année pour le salon Made In Val de Loire le 7 Novembre 2023.
 
 --------------------------------------------
+# Contexte du projet
+Cette année sera organisé la nouvelle édition du salon made in Val de Loire.
+Le salon permet de découvrir les entreprises et les métiers associés à l'industrie régionale. Il met également en lumière l’esprit innovant des jeunes, futurs acteurs de l’industrie. 
 
-Quel est le but du projet ?
+Cette année, le salon sera décliné autour de plusieurs grands thèmes, dont un sur la Cyber sécurité.
+Le salon Made in Val de Loire nous propose un espace dans leur salon basé sur la Cybersécurité afin de sensibiliser les visiteurs aux risques liés.
 
-La demande fixée par le client est de mettre en place des Quiz permettant aux visiteurs de répondre à des questions associées au thème de la Cybersécurité.
-Ce quiz doit être ludique et accessible à tous les visiteurs.
+La demande a été fixée par le client est de mettre en place des Quiz permettant aux visiteurs de répondre à des questions associés au thème de la Cybersécurité.
+Ce Quiz doit être ludique et accessible à tous les visiteurs.
 
-Ce projet est effectué sous forme de groupe, le meilleur groupe ira au salon pour présenter son application et sensibiliser les visiteurs.
+De plus nos encadrants nous ont aussi demandés de proposé d’autres idées d’applications qui pourrons être présenté et exploitée lors du salon. 
+
 
 --------------------------------------------
 
