@@ -20,7 +20,7 @@ namespace ProjetMadeInValDeLoire
             InitializeComponent();
         }
 
-
+        // Evenement clique pour le bouton règles
         private void regle_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -29,6 +29,7 @@ namespace ProjetMadeInValDeLoire
             regle.Show();
         }
 
+        // Evenement clique pour le bouton commencer
         private void commencer_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -37,6 +38,7 @@ namespace ProjetMadeInValDeLoire
             commencer.Show();
         }
 
+        // Evenement clique pour le bouton connecter/s'inscrire
         private void connecter_Click(object sender, EventArgs e)
         {
             this.Hide();

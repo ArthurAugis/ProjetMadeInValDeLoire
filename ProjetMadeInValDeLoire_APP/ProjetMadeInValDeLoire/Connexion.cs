@@ -17,6 +17,8 @@ namespace ProjetMadeInValDeLoire
     {
         MySqlConnection laConnection;
         User user = new User();
+
+        // Méthode pour ouvrir la page connexion
         public Connexion()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace ProjetMadeInValDeLoire
             }
         }
 
+        // Permet d'ouvrir la connexion avec la BDD
         private bool ouvertureConnexion()
         {
             bool retour = true;
@@ -48,6 +51,7 @@ namespace ProjetMadeInValDeLoire
             return retour;
         }
 
+        // Permet de fermer la connexion avec la BDD
         private bool fermetureConnexion()
         {
             bool retour = true;
@@ -62,12 +66,13 @@ namespace ProjetMadeInValDeLoire
             return retour;
         }
 
+        // Evenement clique pour le bouton inscrire
         private void inscrire_Click(object sender, EventArgs e)
         {
             if (txtInsIden.Text.Length != 0 && txtInsMdp.Text.Length != 0 && txtInsPre.Text.Length != 0 && txtInsNom.Text.Length != 0)
             {
                 MySqlCommand cmd = (MySqlCommand)laConnection.CreateCommand();
-                String requete = "SELECT login FROM Utilisateur WHERE login LIKE '" + txtInsIden.Text + "';";
+                String requete = "SELECT login FROM utilisateur WHERE login LIKE '" + txtInsIden.Text + "';";
                 cmd.CommandText = requete;
                 MySqlDataReader dr;
                 try
@@ -103,12 +108,13 @@ namespace ProjetMadeInValDeLoire
             }
         }
 
+        // Evenement clique pour le bouton connecter
         private void btnConnecter_Click(object sender, EventArgs e)
         {
             if (txtConnIden.Text.Length != 0 && txtConnMdp.Text.Length != 0)
             {
                 MySqlCommand cmd = (MySqlCommand)laConnection.CreateCommand();
-                String requete = "SELECT login, password FROM Utilisateur WHERE login LIKE '" + txtConnIden.Text + "' AND password LIKE '" + user.HashMdp(txtConnMdp.Text) + "';";
+                String requete = "SELECT login, password FROM utilisateur WHERE login LIKE '" + txtConnIden.Text + "' AND password LIKE '" + user.HashMdp(txtConnMdp.Text) + "';";
                 cmd.CommandText = requete;
                 MySqlDataReader dr;
                 try
@@ -145,6 +151,7 @@ namespace ProjetMadeInValDeLoire
             }
         }
 
+        // Evenement clique pour voir le mot de passe
         private void voirMDP(object sender, EventArgs e)
         {
             if (txtInsMdp.UseSystemPasswordChar == true)

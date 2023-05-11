@@ -39,7 +39,6 @@
             this.txtTop9 = new System.Windows.Forms.Label();
             this.txtTop8 = new System.Windows.Forms.Label();
             this.txtTop7 = new System.Windows.Forms.Label();
-            this.lblScore = new System.Windows.Forms.Label();
             this.txtTop10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -70,9 +69,9 @@
             this.txtTop1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTop1.Location = new System.Drawing.Point(12, 56);
             this.txtTop1.Name = "txtTop1";
-            this.txtTop1.Size = new System.Drawing.Size(64, 20);
+            this.txtTop1.Size = new System.Drawing.Size(27, 20);
             this.txtTop1.TabIndex = 9;
-            this.txtTop1.Text = "1 - Nom";
+            this.txtTop1.Text = "1 -";
             // 
             // txtTop2
             // 
@@ -80,9 +79,9 @@
             this.txtTop2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTop2.Location = new System.Drawing.Point(12, 87);
             this.txtTop2.Name = "txtTop2";
-            this.txtTop2.Size = new System.Drawing.Size(64, 20);
+            this.txtTop2.Size = new System.Drawing.Size(27, 20);
             this.txtTop2.TabIndex = 10;
-            this.txtTop2.Text = "2 - Nom";
+            this.txtTop2.Text = "2 -";
             // 
             // txtTop3
             // 
@@ -90,9 +89,9 @@
             this.txtTop3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTop3.Location = new System.Drawing.Point(12, 116);
             this.txtTop3.Name = "txtTop3";
-            this.txtTop3.Size = new System.Drawing.Size(64, 20);
+            this.txtTop3.Size = new System.Drawing.Size(27, 20);
             this.txtTop3.TabIndex = 11;
-            this.txtTop3.Text = "3 - Nom";
+            this.txtTop3.Text = "3 -";
             // 
             // txtTop6
             // 
@@ -100,9 +99,9 @@
             this.txtTop6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTop6.Location = new System.Drawing.Point(12, 206);
             this.txtTop6.Name = "txtTop6";
-            this.txtTop6.Size = new System.Drawing.Size(64, 20);
+            this.txtTop6.Size = new System.Drawing.Size(27, 20);
             this.txtTop6.TabIndex = 14;
-            this.txtTop6.Text = "6 - Nom";
+            this.txtTop6.Text = "6 -";
             // 
             // txtTop5
             // 
@@ -110,9 +109,9 @@
             this.txtTop5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTop5.Location = new System.Drawing.Point(12, 177);
             this.txtTop5.Name = "txtTop5";
-            this.txtTop5.Size = new System.Drawing.Size(64, 20);
+            this.txtTop5.Size = new System.Drawing.Size(27, 20);
             this.txtTop5.TabIndex = 13;
-            this.txtTop5.Text = "5 - Nom";
+            this.txtTop5.Text = "5 -";
             // 
             // txtTop4
             // 
@@ -120,9 +119,9 @@
             this.txtTop4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTop4.Location = new System.Drawing.Point(12, 146);
             this.txtTop4.Name = "txtTop4";
-            this.txtTop4.Size = new System.Drawing.Size(64, 20);
+            this.txtTop4.Size = new System.Drawing.Size(27, 20);
             this.txtTop4.TabIndex = 12;
-            this.txtTop4.Text = "4 - Nom";
+            this.txtTop4.Text = "4 -";
             // 
             // txtTop9
             // 
@@ -130,9 +129,9 @@
             this.txtTop9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTop9.Location = new System.Drawing.Point(12, 295);
             this.txtTop9.Name = "txtTop9";
-            this.txtTop9.Size = new System.Drawing.Size(64, 20);
+            this.txtTop9.Size = new System.Drawing.Size(27, 20);
             this.txtTop9.TabIndex = 17;
-            this.txtTop9.Text = "9 - Nom";
+            this.txtTop9.Text = "9 -";
             // 
             // txtTop8
             // 
@@ -140,9 +139,9 @@
             this.txtTop8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTop8.Location = new System.Drawing.Point(12, 266);
             this.txtTop8.Name = "txtTop8";
-            this.txtTop8.Size = new System.Drawing.Size(64, 20);
+            this.txtTop8.Size = new System.Drawing.Size(27, 20);
             this.txtTop8.TabIndex = 16;
-            this.txtTop8.Text = "8 - Nom";
+            this.txtTop8.Text = "8 -";
             // 
             // txtTop7
             // 
@@ -150,19 +149,9 @@
             this.txtTop7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTop7.Location = new System.Drawing.Point(12, 235);
             this.txtTop7.Name = "txtTop7";
-            this.txtTop7.Size = new System.Drawing.Size(64, 20);
+            this.txtTop7.Size = new System.Drawing.Size(27, 20);
             this.txtTop7.TabIndex = 15;
-            this.txtTop7.Text = "7 - Nom";
-            // 
-            // lblScore
-            // 
-            this.lblScore.AutoSize = true;
-            this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.Location = new System.Drawing.Point(12, 355);
-            this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(200, 20);
-            this.lblScore.TabIndex = 19;
-            this.lblScore.Text = "Ton classement est 69ème";
+            this.txtTop7.Text = "7 -";
             // 
             // txtTop10
             // 
@@ -170,16 +159,15 @@
             this.txtTop10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTop10.Location = new System.Drawing.Point(12, 324);
             this.txtTop10.Name = "txtTop10";
-            this.txtTop10.Size = new System.Drawing.Size(73, 20);
+            this.txtTop10.Size = new System.Drawing.Size(36, 20);
             this.txtTop10.TabIndex = 18;
-            this.txtTop10.Text = "10 - Nom";
+            this.txtTop10.Text = "10 -";
             // 
             // Scoreboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblScore);
             this.Controls.Add(this.txtTop10);
             this.Controls.Add(this.txtTop9);
             this.Controls.Add(this.txtTop8);
@@ -193,6 +181,7 @@
             this.Controls.Add(this.lblTitre);
             this.Controls.Add(this.btnAccueil);
             this.Name = "Scoreboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tableau des scores";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -212,7 +201,6 @@
         private System.Windows.Forms.Label txtTop9;
         private System.Windows.Forms.Label txtTop8;
         private System.Windows.Forms.Label txtTop7;
-        private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label txtTop10;
     }
 }

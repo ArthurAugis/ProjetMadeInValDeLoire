@@ -12,6 +12,7 @@ namespace ProjetMadeInValDeLoire
 {
     public partial class Regle : Form
     {
+        // Rien à commenter à part que c'est la page règle
         public Regle()
         {
             InitializeComponent();

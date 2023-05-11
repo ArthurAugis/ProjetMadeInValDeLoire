@@ -21,6 +21,7 @@ namespace ProjetMadeInValDeLoire
             InitializeComponent();
         }
 
+        // Méthode pour ouvrir la fenêtre pour choisir la difficulté
         public Commencer(String username, String password)
         {
             InitializeComponent();
@@ -28,27 +29,32 @@ namespace ProjetMadeInValDeLoire
             this.password = password;
         }
 
+        // Evenement clique pour le bouton difficulté 1
         private void difficulte1_Click(object sender, EventArgs e)
         {
-            start("Collégiens");
+            start(1);
         }
 
+        // Evenement clique pour le bouton difficulté 1
         private void difficulte2_Click(object sender, EventArgs e)
         {
-            start("Lycéens");
+            start(2);
         }
 
+        // Evenement clique pour le bouton difficulté 1
         private void difficulte3_Click(object sender, EventArgs e)
         {
-            start("Etudiants");
+            start(3);
         }
 
+        // Evenement clique pour le bouton difficulté 1
         private void difficulte4_Click(object sender, EventArgs e)
         {
-            start("Professionnels");
+            start(4);
         }
 
-        private void start(String difficulte)
+        // Méthode pour lancer le quiz avec la difficulté voulue
+        private void start(int difficulte)
         {
             this.Hide();
             if (username == null && password == null)

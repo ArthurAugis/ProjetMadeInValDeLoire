@@ -1,7 +1,10 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,116 +17,330 @@ namespace ProjetMadeInValDeLoire
     {
 
         private int questionsNbr;
-        private String niveau;
+        private int niveau;
         private String username;
         private String password;
-        
-        public Question(String niveau)
+        MySqlConnection laConnection;
+        private int points;
+        private String bonnereponse;
+
+        // Méthode permettant d'ouvrir la page avec une question suivant le niveau
+        public Question(int niveau)
         {
             InitializeComponent();
-            difficulte.Text = "Difficulté : " + niveau;
             this.niveau = niveau;
             questionsNbr = 1;
-            lblNbrQuestions.Text = questionsNbr + "/10";
+            lblNbrQuestions.Text = questionsNbr + "/" + getNbrQuestions();
+            getDifficulte();
+            getQuestion();
+            try
+            {
+                laConnection = new MySqlConnection(ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString);
+                ouvertureConnexion();
+            }
+            catch (MySqlException ex)
+            {
+            }
         }
 
-        public Question(String niveau, int questionNbr)
+        // Méthode permettant d'ouvrir la page avec une question suivant le niveau si il y a déjà une question répondue
+        public Question(int niveau, int questionNbr, int points)
         {
             InitializeComponent();
-            difficulte.Text = "Difficulté : " + niveau;
             this.niveau = niveau;
             questionsNbr = questionNbr;
-            lblNbrQuestions.Text = questionsNbr + "/10";
+            this.points = points;
+            lblNbrQuestions.Text = questionsNbr + "/" + getNbrQuestions();
+            getDifficulte();
+            getQuestion();
+            try
+            {
+                laConnection = new MySqlConnection(ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString);
+                ouvertureConnexion();
+            }
+            catch (MySqlException ex)
+            {
+            }
         }
 
-        public Question(String niveau, String username, String password)
+        // Méthode permettant d'ouvrir la page avec une question suivant le niveau si l'utilisateur c'est connecté
+        public Question(int niveau, String username, String password)
         {
             InitializeComponent();
-            difficulte.Text = "Difficulté : " + niveau;
             this.niveau = niveau;
             questionsNbr = 1;
-            lblNbrQuestions.Text = questionsNbr + "/10";
-            this.username = username;
-            this.password = password; 
-        }
-
-        public Question(String niveau, int questionNbr, String username, String password)
-        {
-            InitializeComponent();
-            difficulte.Text = "Difficulté : " + niveau;
-            this.niveau = niveau;
-            questionsNbr = questionNbr;
-            lblNbrQuestions.Text = questionsNbr + "/10";
+            lblNbrQuestions.Text = questionsNbr + "/" + getNbrQuestions();
             this.username = username;
             this.password = password;
+            getDifficulte();
+            getQuestion();
+            try
+            {
+                laConnection = new MySqlConnection(ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString);
+                ouvertureConnexion();
+            }
+            catch (MySqlException ex)
+            {
+            }
         }
 
-        private void btnRepondre_Click(object sender, EventArgs e)
+        // Méthode permettant d'ouvrir la page avec une question suivant le niveau si l'utilisateur c'est connecté et qu'il a répondu à une question
+        public Question(int niveau, int questionNbr, String username, String password, int points)
         {
-            if (questionsNbr < 10)
+            InitializeComponent();
+            this.niveau = niveau;
+            this.points = points;
+            questionsNbr = questionNbr;
+            lblNbrQuestions.Text = questionsNbr + "/" + getNbrQuestions();
+            this.username = username;
+            this.password = password;
+            getDifficulte();
+            getQuestion();
+            try
+            {
+                laConnection = new MySqlConnection(ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString);
+                ouvertureConnexion();
+            }
+            catch (MySqlException ex)
+            {
+            }
+        }
+
+        // Permet de récupérer le nombre de questions
+        private int getNbrQuestions()
+        {
+            int numRows = 0;
+            string connectionString = ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString;
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM verifier WHERE CLE_quiz = @niveau";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@niveau", niveau);
+                    try
+                    {
+                        connection.Open();
+                        numRows = Convert.ToInt32(command.ExecuteScalar());
+                    }
+                    catch (Exception ex){
+                        lblNbrQuestions.Text = ex.Message;
+                    }
+                }
+            }
+            return numRows;
+        }
+
+        // Permet de récupérer la difficulté choisie par le joueurs
+        private void getDifficulte()
+        {
+            string difficulte = "";
+            string connectionString = ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString;
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT nom_diff FROM difficulte WHERE CLP_difficulte = @niveau";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@niveau", niveau);
+                    try
+                    {
+                        connection.Open();
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                difficulte = reader.GetString(0);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+            }
+            this.difficulte.Text = "Difficulté : " + difficulte;
+            this.difficulte.Left = (this.ClientSize.Width - this.difficulte.Size.Width) / 2;
+        }
+
+        // Permet de récupérer la question et les réponses dans la BDD
+        private void getQuestion()
+        {
+            string question = "";
+            string reponse = "";
+            int clp = 0;
+            int good = 0;
+            string connectionString = ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString;
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT questions.question, questions.CLP_question FROM questions INNER JOIN verifier ON CLE_question = CLE_quiz WHERE verifier.CLE_quiz = @niveau LIMIT 1 OFFSET @num";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@niveau", niveau);
+                    command.Parameters.AddWithValue("@num", questionsNbr - 1);
+                    try
+                    {
+                        connection.Open();
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                question = reader.GetString(0);
+                                clp = reader.GetInt32(1);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+
+
+                string query2 = "SELECT repondre.good_rep, reponse.reponse FROM repondre INNER JOIN reponse ON CLP_reponse = CLE_reponse WHERE repondre.CLE_question = @ques";
+                using (MySqlCommand command = new MySqlCommand(query2, connection))
+                {
+                    command.Parameters.AddWithValue("@ques", clp);
+                    try
+                    {
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            int i = 0;
+                            while (reader.Read())
+                            {
+                                if (reader.GetInt32(0) == 1)
+                                {
+                                    bonnereponse = reader.GetString(1);
+                                }
+                                if (i == 0)
+                                {
+                                    reponse1.Text = reader.GetString(1);
+                                }
+                                else if (i == 1)
+                                {
+                                    reponse2.Text = reader.GetString(1);
+                                }
+                                else if (i == 2)
+                                {
+                                    reponse3.Text = reader.GetString(1);
+                                }
+                                i++;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+            }
+            lblQuestion.Text = question;
+            lblQuestion.Left = (this.ClientSize.Width - lblQuestion.Size.Width) / 2;
+        }
+
+        // Permet de mettre la prochaine question ou d'aller à la page résultat
+        private void nextQuestion()
+        {
+            if (questionsNbr < getNbrQuestions())
             {
                 this.Hide();
                 if (username == null && password == null)
                 {
-                    Question quest = new Question(niveau, questionsNbr + 1);
+                    Question quest = new Question(niveau, questionsNbr + 1, points);
                     quest.Closed += (s, args) => this.Close();
                     quest.Show();
                 }
                 else
                 {
-                    Question quest = new Question(niveau, questionsNbr + 1, username, password);
+                    Question quest = new Question(niveau, questionsNbr + 1, username, password, points);
                     quest.Closed += (s, args) => this.Close();
                     quest.Show();
                 }
             }
-            else if (questionsNbr == 10)
+            else if (questionsNbr >= getNbrQuestions())
             {
                 this.Hide();
+                double score = 0;
+                if (points == 0)
+                {
+                    score = 0;
+                }
+                else
+                {
+                    score = (points * 100) / getNbrQuestions();
+                }
                 if (username == null && password == null)
                 {
-                    Resultats result = new Resultats();
+                    
+                    Resultats result = new Resultats(score, niveau);
                     result.Closed += (s, args) => this.Close();
                     result.Show();
                 }
                 else
                 {
-                    Resultats result = new Resultats(username, password);
+                    Resultats result = new Resultats(username, password, score, niveau);
                     result.Closed += (s, args) => this.Close();
                     result.Show();
                 }
             }
         }
 
+        // Permet de fermer la connexion avec la BDD
+        private bool ouvertureConnexion()
+        {
+            bool retour = true;
+            try
+            {
+                laConnection.Open();
+            }
+            catch (MySqlException e)
+            {
+                retour = false;
+            }
+            return retour;
+        }
+
+        // Permet de fermer la connexion avec la BDD
+        private bool fermetureConnexion()
+        {
+            bool retour = true;
+            try
+            {
+                laConnection.Close();
+            }
+            catch (MySqlException e)
+            {
+                retour = false;
+            }
+            return retour;
+        }
+
+        // Evenement clique pour le bouton réponse 1
         private void reponse1_Click(object sender, EventArgs e)
         {
-            answerClick(reponse1);
+            if (reponse1.Text == bonnereponse)
+            {
+                points = points + 1;
+            }
+            nextQuestion();
+
         }
 
+        // Evenement clique pour le bouton réponse 2
         private void reponse2_Click(object sender, EventArgs e)
         {
-            answerClick(reponse2);
+            if (reponse2.Text == bonnereponse)
+            {
+                points = points + 1;
+            }
+            nextQuestion();
+
         }
 
+        // Evenement clique pour le bouton réponse 3
         private void reponse3_Click(object sender, EventArgs e)
         {
-            answerClick(reponse3);
-        }
-
-        private void reponse4_Click(object sender, EventArgs e)
-        {
-            answerClick(reponse4);
-        }
-
-        private void answerClick(Button btn)
-        {
-            if(btn.BackColor == SystemColors.Control)
+            if (reponse3.Text == bonnereponse)
             {
-                btn.BackColor = SystemColors.ControlDark;
+                points = points + 1;
             }
-            else if (btn.BackColor == SystemColors.ControlDark)
-            {
-                btn.BackColor = SystemColors.Control;
-            }
+            nextQuestion();
         }
     }
 }
