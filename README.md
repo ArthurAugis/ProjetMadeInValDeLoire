@@ -35,6 +35,30 @@ Voici la liste des objectifs que nous devons réaliser pendant ces trois jours d
 
 
 # Nos objectif par jour
+## 9 Mai. 2023
+Création des groupes.                  
+
+Les groupes SLAM:                       
+• Groupe 1 : Hugo Perret, Kalvin.                  
+• Groupe 2 : Najib, Yahya, Allan.                    
+• Groupe 3 : Pierre, Kenan, Hugo Bouland.                    
+• Groupe 4 : Arthur, Lou-Enzo, Alexis.                            
+
+Chaque groupe SLAM doit être complété par des étudiants SISR.                          
+Pour chaque Groupe (SLAM/SISR) :                        
+• Appropriation du contexte et de la demande.                                
+• Propositions d'une base de données, mais aussi des maquettes d'écrans, d'organisa3on etc... • Propositions des applications retenues.                              
+
+Dépôts attendus :                                   
+Les prototypes associés aux applications proposées (les écrans prévus, leurs enchaînements).                          
+
+• La base de données retenue (schéma physique ou schéma rela3onnel ou schéma Uml).                           
+• Les conventions de nommages prévues pour la base de données ainsi que pour le code.                         
+• Le nom du chef de projet (1 SLAM par groupe).                           
+• Le lien GIT associé à votre projet.                             
+
+-	Début de la programmation pour les SLAM.                               
+-	Début de la création des quiz pour les SISR.                                    
 
 --------------------------------------------
 
