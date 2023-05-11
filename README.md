@@ -15,6 +15,22 @@ Ce Quiz doit être ludique et accessible à tous les visiteurs.
 
 De plus nos encadrants nous ont aussi demandés de proposé d’autres idées d’applications qui pourrons être présenté et exploitée lors du salon. 
 
+# Nos missions
+Voici la liste des objectifs que nous devons réaliser pendant ces trois jours de projets :
+
+•	Réaliser une application de type Quiz.
+•	Proposer un autre type d'application.
+•	Proposer une base de données associée pour l’application.
+•	Déposer une base de données remplie (d’information style questions…).
+
+•	Proposer un niveau d’accès (login) :
+ 	- Public : pas de mot de passe ni de login, pas de suivi individuel des scores.
+	- Privé : un accès via login/mot de passe (à vous de les définir), historique des scores avec date, heure de réalisation, tableau des meilleurs scores.
+
+
+•	Déposer la documentation technique associée au projet ainsi que les tests réalisés.
+•	Prévoir une aide sur l'application.
+•	Prévoir différents niveaux d'accès (collégiens, lycéens, étudiants, professionnels sont vos visiteurs, donc vos utilisateurs).
 
 --------------------------------------------
 
