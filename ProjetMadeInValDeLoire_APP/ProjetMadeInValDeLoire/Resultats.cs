@@ -83,7 +83,7 @@ namespace ProjetMadeInValDeLoire
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Scoreboard scoreboard = new Scoreboard();
+            Scoreboard scoreboard = new Scoreboard(niveau, username, password);
             scoreboard.Closed += (s, args) => this.Close();
             scoreboard.Show();
         }
@@ -92,9 +92,18 @@ namespace ProjetMadeInValDeLoire
         private void btnAccueil_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Accueil accueil = new Accueil();
-            accueil.Closed += (s, args) => this.Close();
-            accueil.Show();
+            if (username == null && password == null)
+            {
+                Accueil accueil = new Accueil();
+                accueil.Closed += (s, args) => this.Close();
+                accueil.Show();
+            }
+            else
+            {
+                Accueil accueil = new Accueil(username, password);
+                accueil.Closed += (s, args) => this.Close();
+                accueil.Show();
+            }
         }
 
         // Evenement clique pour le bouton pour voir le mot de passe
@@ -126,7 +135,7 @@ namespace ProjetMadeInValDeLoire
                     {
                         dr.Close();
                         MySqlCommand cmd2 = (MySqlCommand)laConnection.CreateCommand();
-                        String requete2 = "SELECT score FROM score WHERE CLE_login LIKE '" + txtInsIden.Text + "';";
+                        String requete2 = "SELECT score FROM score WHERE CLE_login LIKE '" + txtInsIden.Text + "' AND CLE_quiz =" + niveau + ";";
                         cmd2.CommandText = requete2;
                         MySqlDataReader dr2;
                         try
@@ -134,14 +143,16 @@ namespace ProjetMadeInValDeLoire
                             dr2 = cmd2.ExecuteReader();
                             if (dr2.HasRows)
                             {
+                                int scoreIndex = dr2.GetOrdinal("score");
                                 while (dr2.Read())
                                 {
-                                    int score = dr2.GetInt32(0);
+                                    int score = dr2.GetInt32(scoreIndex);
+
                                     if (score < this.score)
                                     {
                                         dr2.Close();
                                         MySqlCommand cmd3 = (MySqlCommand)laConnection.CreateCommand();
-                                        String requete3 = "UPDATE `score` SET `score`='" + this.score + "' WHERE CLE_login LIKE '" + username + "';";
+                                        String requete3 = "UPDATE `score` SET `score`=" + this.score + " WHERE CLE_login LIKE '" + txtInsIden.Text + "'AND CLE_quiz = " + niveau + ";";
                                         cmd3.CommandText = requete3;
                                         MySqlDataReader dr3;
                                         try
@@ -154,10 +165,15 @@ namespace ProjetMadeInValDeLoire
                                             message.Text = error.Message;
                                         }
                                     }
+                                    else
+                                    {
+                                        dr2.Close();
+                                    }
                                 }
                             }
                             else
                             {
+                                dr2.Close();
                                 MySqlCommand cmd3 = (MySqlCommand)laConnection.CreateCommand();
                                 String requete3 = "INSERT INTO `score`(`CLE_login`, `CLE_quiz`, `score`) VALUES ('" + txtInsIden.Text + "','" + niveau + "','" + score + "');";
                                 cmd3.CommandText = requete3;
@@ -179,7 +195,7 @@ namespace ProjetMadeInValDeLoire
                         message.ForeColor = Color.Green;
                         this.Hide();
                         fermetureConnexion();
-                        Scoreboard scoreboard = new Scoreboard();
+                        Scoreboard scoreboard = new Scoreboard(niveau, txtInsIden.Text, user.HashMdp(txtInsMdp.Text));
                         scoreboard.Closed += (s, args) => this.Close();
                         scoreboard.Show();
                     }
@@ -277,7 +293,7 @@ namespace ProjetMadeInValDeLoire
                 }
                 this.Hide();
                 fermetureConnexion();
-                Scoreboard scoreboard = new Scoreboard();
+                Scoreboard scoreboard = new Scoreboard(niveau, txtInsIden.Text, user.HashMdp(txtInsMdp.Text));
                 scoreboard.Closed += (s, args) => this.Close();
                 scoreboard.Show();
             }

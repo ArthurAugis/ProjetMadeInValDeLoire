@@ -17,6 +17,8 @@ namespace ProjetMadeInValDeLoire
     {
         MySqlConnection laConnection;
         User user = new User();
+        String username;
+        String password;
 
         // Méthode pour ouvrir la page connexion
         public Connexion()
@@ -24,6 +26,26 @@ namespace ProjetMadeInValDeLoire
             InitializeComponent();
             txtInsMdp.UseSystemPasswordChar = true;
             txtConnMdp.UseSystemPasswordChar = true;
+            try
+            {
+                laConnection = new MySqlConnection(ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString);
+                ouvertureConnexion();
+            }
+            catch (MySqlException ex)
+            {
+                message.Text = "Connexion ratée : " + ex.Message;
+                message.ForeColor = Color.Red;
+            }
+        }
+
+        // Méthode pour ouvrir la page connexion avec une connexion déjà existante
+        public Connexion(String username, String password)
+        {
+            InitializeComponent();
+            txtInsMdp.UseSystemPasswordChar = true;
+            txtConnMdp.UseSystemPasswordChar = true;
+            this.username = username;
+            this.password = password;
             try
             {
                 laConnection = new MySqlConnection(ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString);
@@ -173,6 +195,24 @@ namespace ProjetMadeInValDeLoire
             else if (txtConnMdp.UseSystemPasswordChar == false)
             {
                 txtConnMdp.UseSystemPasswordChar = true;
+            }
+        }
+
+        // Bouton retour
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            if (username == null && password == null)
+            {
+                Accueil accueil = new Accueil();
+                accueil.Closed += (s, args) => this.Close();
+                accueil.Show();
+            }
+            else
+            {
+                Accueil accueil = new Accueil(username, password);
+                accueil.Closed += (s, args) => this.Close();
+                accueil.Show();
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Win32;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,12 +17,16 @@ namespace ProjetMadeInValDeLoire
 {
     public partial class Scoreboard : Form
     {
-
+        private int niveau;
+        private String username;
+        private String password;
         MySqlConnection laConnection;
-        public Scoreboard()
+        public Scoreboard(int niveau, String username, String password)
         {
             InitializeComponent();
-
+            this.username = username;
+            this.password = password;
+            this.niveau = niveau;
             try
             {
                 laConnection = new MySqlConnection(ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString);
@@ -34,7 +39,7 @@ namespace ProjetMadeInValDeLoire
             List<string> top10Scores = new List<string>();
 
             // Permet de récupérer les 10 meilleurs scores
-            string query = "SELECT CLE_login, score FROM score ORDER BY score DESC LIMIT 10;";
+            string query = "SELECT CLE_login, score FROM score WHERE CLE_quiz = " + niveau + " ORDER BY score DESC LIMIT 10;";
 
             try
             {
@@ -48,7 +53,7 @@ namespace ProjetMadeInValDeLoire
                         {
                             string login = reader.GetString(0);
                             int score = reader.GetInt32(1);
-                            top10Scores.Add($"{login} : {score}");
+                            top10Scores.Add($"{login} : {score}%");
                         }
                     }
                 }
@@ -70,7 +75,7 @@ namespace ProjetMadeInValDeLoire
         private void btnAccueil_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Accueil accueil = new Accueil();
+            Accueil accueil = new Accueil(username, password);
             accueil.Closed += (s, args) => this.Close();
             accueil.Show();
         }

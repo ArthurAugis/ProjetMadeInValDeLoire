@@ -15,36 +15,80 @@ namespace ProjetMadeInValDeLoire
 {
     public partial class Accueil : Form
     {
+        private String username;
+        private String password;
+
         public Accueil()
         {
             InitializeComponent();
+        }
+
+        public Accueil(String username, String password)
+        {
+            InitializeComponent();
+            this.username = username;
+            this.password = password;
         }
 
         // Evenement clique pour le bouton règles
         private void regle_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Regle regle = new Regle();
-            regle.Closed += (s, args) => this.Close();
-            regle.Show();
+            this.Hide();
+            if (username == null && password == null)
+            {
+                Regle regle = new Regle();
+                regle.Closed += (s, args) => this.Close();
+                regle.Show();
+            }
+            else
+            {
+                Regle regle = new Regle(username, password);
+                regle.Closed += (s, args) => this.Close();
+                regle.Show();
+            }
         }
 
         // Evenement clique pour le bouton commencer
         private void commencer_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Commencer commencer = new Commencer();
-            commencer.Closed += (s, args) => this.Close();
-            commencer.Show();
+            if (username == null && password == null)
+            {
+                Commencer commencer = new Commencer();
+                commencer.Closed += (s, args) => this.Close();
+                commencer.Show();
+            }
+            else
+            {
+                Commencer commencer = new Commencer(username, password);
+                commencer.Closed += (s, args) => this.Close();
+                commencer.Show();
+            }
         }
 
         // Evenement clique pour le bouton connecter/s'inscrire
         private void connecter_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Connexion connexion = new Connexion();
-            connexion.Closed += (s, args) => this.Close();
-            connexion.Show();
+            if (username == null && password == null)
+            {
+                Connexion connexion = new Connexion();
+                connexion.Closed += (s, args) => this.Close();
+                connexion.Show();
+            }
+            else
+            {
+                Connexion connexion = new Connexion(username, password);
+                connexion.Closed += (s, args) => this.Close();
+                connexion.Show();
+            }
+        }
+
+        // Bouton quitter l'application
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

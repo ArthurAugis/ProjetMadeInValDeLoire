@@ -70,5 +70,23 @@ namespace ProjetMadeInValDeLoire
                 quest.Show();
             }
         }
+
+        // Bouton retour
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            if (username == null && password == null)
+            {
+                Accueil accueil = new Accueil();
+                accueil.Closed += (s, args) => this.Close();
+                accueil.Show();
+            }
+            else
+            {
+                Accueil accueil = new Accueil(username, password);
+                accueil.Closed += (s, args) => this.Close();
+                accueil.Show();
+            }
+        }
     }
 }

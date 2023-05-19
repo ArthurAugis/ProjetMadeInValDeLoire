@@ -21,6 +21,7 @@ namespace ProjetMadeInValDeLoire
         private String username;
         private String password;
         MySqlConnection laConnection;
+        List<QuestionData> questions = new List<QuestionData>();
         private int points;
         private String bonnereponse;
 
@@ -44,12 +45,13 @@ namespace ProjetMadeInValDeLoire
         }
 
         // Méthode permettant d'ouvrir la page avec une question suivant le niveau si il y a déjà une question répondue
-        public Question(int niveau, int questionNbr, int points)
+        public Question(int niveau, int questionNbr, int points, List<QuestionData> questions)
         {
             InitializeComponent();
             this.niveau = niveau;
             questionsNbr = questionNbr;
             this.points = points;
+            this.questions = questions;
             lblNbrQuestions.Text = questionsNbr + "/" + getNbrQuestions();
             getDifficulte();
             getQuestion();
@@ -85,11 +87,12 @@ namespace ProjetMadeInValDeLoire
         }
 
         // Méthode permettant d'ouvrir la page avec une question suivant le niveau si l'utilisateur c'est connecté et qu'il a répondu à une question
-        public Question(int niveau, int questionNbr, String username, String password, int points)
+        public Question(int niveau, int questionNbr, String username, String password, int points, List<QuestionData> questions)
         {
             InitializeComponent();
             this.niveau = niveau;
             this.points = points;
+            this.questions = questions;
             questionsNbr = questionNbr;
             lblNbrQuestions.Text = questionsNbr + "/" + getNbrQuestions();
             this.username = username;
@@ -165,41 +168,51 @@ namespace ProjetMadeInValDeLoire
         private void getQuestion()
         {
             string question = "";
-            string reponse = "";
             int clp = 0;
-            int good = 0;
             string connectionString = ConfigurationManager.ConnectionStrings["connexionBdd"].ConnectionString;
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                string query = "SELECT questions.question, questions.CLP_question FROM questions INNER JOIN verifier ON CLE_question = CLE_quiz WHERE verifier.CLE_quiz = @niveau LIMIT 1 OFFSET @num";
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                string query = "SELECT questions.question, questions.CLP_question FROM questions INNER JOIN verifier ON CLE_question = CLP_question WHERE verifier.CLE_quiz = @niveau";
+                if (questions.Count == 0)
                 {
-                    command.Parameters.AddWithValue("@niveau", niveau);
-                    command.Parameters.AddWithValue("@num", questionsNbr - 1);
-                    try
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        connection.Open();
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                        command.Parameters.AddWithValue("@niveau", niveau);
+                        try
                         {
-                            if (reader.Read())
+                            connection.Open();
+                            using (MySqlDataReader reader = command.ExecuteReader())
                             {
-                                question = reader.GetString(0);
-                                clp = reader.GetInt32(1);
+                                while (reader.Read())
+                                {
+                                    question = reader.GetString(0);
+                                    clp = reader.GetInt32(1);
+                                    QuestionData questionData = new QuestionData { Question = question, Clp = clp };
+                                    questions.Add(questionData);
+                                }
                             }
                         }
-                    }
-                    catch (Exception ex)
-                    {
+                        catch (Exception ex)
+                        {
+                            // Handle the exception
+                        }
                     }
                 }
 
-
+                Random random = new Random();
+                int randomQuest = random.Next(questions.Count);
+                QuestionData randomQuestion = questions[randomQuest];
+                lblQuestion.Text = randomQuestion.Question;
                 string query2 = "SELECT repondre.good_rep, reponse.reponse FROM repondre INNER JOIN reponse ON CLP_reponse = CLE_reponse WHERE repondre.CLE_question = @ques";
                 using (MySqlCommand command = new MySqlCommand(query2, connection))
                 {
-                    command.Parameters.AddWithValue("@ques", clp);
+                    command.Parameters.AddWithValue("@ques", randomQuestion.Clp);
                     try
                     {
+                        if (connection.State != ConnectionState.Open)
+                        {
+                            connection.Open();
+                        }
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
                             int i = 0;
@@ -227,10 +240,11 @@ namespace ProjetMadeInValDeLoire
                     }
                     catch (Exception ex)
                     {
+                        difficulte.Text = ex.Message;
                     }
                 }
+                questions.Remove(randomQuestion);
             }
-            lblQuestion.Text = question;
             lblQuestion.Left = (this.ClientSize.Width - lblQuestion.Size.Width) / 2;
         }
 
@@ -242,13 +256,13 @@ namespace ProjetMadeInValDeLoire
                 this.Hide();
                 if (username == null && password == null)
                 {
-                    Question quest = new Question(niveau, questionsNbr + 1, points);
+                    Question quest = new Question(niveau, questionsNbr + 1, points, questions);
                     quest.Closed += (s, args) => this.Close();
                     quest.Show();
                 }
                 else
                 {
-                    Question quest = new Question(niveau, questionsNbr + 1, username, password, points);
+                    Question quest = new Question(niveau, questionsNbr + 1, username, password, points, questions);
                     quest.Closed += (s, args) => this.Close();
                     quest.Show();
                 }
@@ -341,6 +355,11 @@ namespace ProjetMadeInValDeLoire
                 points = points + 1;
             }
             nextQuestion();
+        }
+
+        private void difficulte_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
